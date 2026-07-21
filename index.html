@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Askly</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="main-grid">
+                <main class="search-area">
+                    <header class="page-header">
+                        <div class="page-heading">
+                            <h1 class="page-title">Askly — быстрый справочник вопросов</h1>
+                            <p class="page-description">Интерактивный сайт для поиска и просмотра готовых вопросов. Ищите по ключевым словам, открывайте темы и сразу переходите к моим проектам на Orbita.</p>
+                        </div>
+                    </header>
+                    <div class="search-container">
+                        <div class="search-input-wrap"><input type="text" id="searchInput" class="search-input" placeholder="Поиск по ключевым словам…" /> <button type="button" class="search-clear" id="searchClearBtn" aria-label="Очистить поиск">&times;</button></div>
+                        <div class="search-meta"><span id="counterText">Загрузка вопросов…</span> <span id="searchStatus"></span></div>
+                    </div>
+                    <div id="qaList"></div>
+                    <div id="noResults" class="no-results hidden">Ничего не найдено. Попробуй изменить запрос.</div>
+                </main>
+                <aside class="sidebar">
+                    <section class="sidebar-panel">
+                        <div class="info-card">
+                            <h2>Что здесь</h2>
+                            <p>Быстрый справочник вопросов с поиском по ключевым словам. Задачи раскрываются внутри для удобного изучения.</p>
+                        </div>
+                        <div class="info-card">
+                            <h2>Как пользоваться</h2>
+                            <p>Введите тему или ключевое слово в поиск. При вводе 3 и более символов результаты автоматически откроются.</p>
+                        </div>
+                        <section class="contact-panel sidebar-contact">
+                            <h2>Контакты</h2>
+                            <p>Быстрый переход к моим сервисам и общему проекту Orbita.</p>
+                            <div class="social-links contact-links">
+                                <a href="№" target="_blank" class="social-btn">Orbita — все проекты</a>
+                                <a href="https://t.me/kageno_qq" target="_blank" class="social-btn">Telegram</a>
+                                <a href="https://vk.com/kageno_gg" target="_blank" class="social-btn">ВКонтакте</a>
+                                <a href="https://boosty.to/kageno_gg" target="_blank" class="social-btn">Boosty</a>
+                                <a href="https://github.com/kageno-x" target="_blank" class="social-btn">GitHub</a>
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+            </div>
+        </div>
+        <button class="feedback-fab" id="openModalBtn">Контакты</button>
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal-window">
+                <button class="modal-close" id="closeModalBtn">×</button>
+                <div class="modal-header">Контакты и информация</div>
+                <div class="modal-desc">Здесь собрана краткая информация и ссылки на мои сервисы.</div>
+                <div class="modal-info">
+                    <div class="modal-section">
+                        <h3>О сайте</h3>
+                        <p>Askly — это быстрый справочник вопросов с поиском по ключевым словам. На мобильных устройствах основная информация доступна в этом окне.</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>Как пользоваться</h3>
+                        <p>Введите 3 и более символов в поиск, чтобы автоматически увидеть результаты.</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" class="social-btn">Orbita — все проекты</a>
+                    <a href="https://t.me/kageno_qq" target="_blank" class="social-btn">Telegram</a>
+                    <a href="https://vk.com/kageno_gg" target="_blank" class="social-btn">ВКонтакте</a>
+                    <a href="https://boosty.to/kageno_gg" target="_blank" class="social-btn">Boosty</a>
+                    <a href="https://github.com/kageno-x" target="_blank" class="social-btn">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "id": 0,
+    "type": "choice",
+    "question": "Вопрос",
+    "options": [
+        {"text": "Ответ", "isCorrect": true},
+        {"text": "Ответ", "isCorrect": true},
+        {"text": "Ответ", "isCorrect": false},
+        {"text": "Ответ", "isCorrect": false}
+    ]
+},
+
+{
+    "id": 0,
+    "type": "matching",
+    "question": "Вопрос",
+    "pairs": [
+        {"left": "Вариант", "right": "Ответ"},
+        {"left": "Вариант", "right": "Ответ"},
+        {"left": "Вариант", "right": "Ответ"}
+    ]
+},
