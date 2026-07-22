@@ -50,7 +50,7 @@ http://localhost:8000
 
 ## Контакты
 
-- Telegram: https://t.me/kageno_qq
+- Telegram: https://t.me/kageno_x
 - VK: https://vk.com/kageno_gg
 - GitHub: https://github.com/kageno-x
 - Boosty: https://boosty.to/kageno_gg
