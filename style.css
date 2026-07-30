@@ -372,7 +372,7 @@ mark.search-highlight {
     border-radius: 3px;
     padding: 0 1px;
 }
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     :root {
         --bg: #131417;
         --surface: #1a1b20;
@@ -386,8 +386,7 @@ mark.search-highlight {
         --accent-soft: rgba(62, 203, 143, 0.16);
         --wrong: #e2726b;
         --wrong-soft: rgba(226, 114, 107, 0.14);
-    }
-}
+    } */
 @media (min-width: 900px) {
     body {
         padding: 0 32px 90px;
