@@ -1,4 +1,22 @@
 let questionsData = [];
+function escapeAttr(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+function escapeRegExp(str) {
+    return String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+function highlightText(text, query) {
+    if (!query) return text;
+    const regex = new RegExp(escapeRegExp(query), "gi");
+    return text.replace(regex, (match) => `<mark class="search-highlight">${match}</mark>`);
+}
+function applyHighlight(item, query) {
+    const targets = item.querySelectorAll("[data-original]");
+    targets.forEach((el) => {
+        const original = el.getAttribute("data-original");
+        el.innerHTML = highlightText(original, query);
+    });
+}
 function renderQuestions(questions) {
     const qaList = document.getElementById("qaList");
     qaList.innerHTML = "";
@@ -7,7 +25,7 @@ function renderQuestions(questions) {
         details.className = "qa-item";
         const summary = document.createElement("summary");
         summary.className = "qa-summary";
-        summary.innerHTML = ` <span class="qa-index">${String(i + 1).padStart(2, "0")}</span> <span class="qa-summary-text">${item.question}</span> `;
+        summary.innerHTML = ` <span class="qa-index">${String(i + 1).padStart(2, "0")}</span> <span class="qa-summary-text" data-original="${escapeAttr(item.question)}">${item.question}</span> `;
         const contentDiv = document.createElement("div");
         contentDiv.className = "qa-content";
         if (item.type === "matching") {
@@ -16,7 +34,7 @@ function renderQuestions(questions) {
             item.pairs.forEach((pair) => {
                 const row = document.createElement("div");
                 row.className = "matching-row";
-                row.innerHTML = ` <div class="match-left">${pair.left}</div> <div class="match-divider">&rarr;</div> <div class="match-right">${pair.right}</div> `;
+                row.innerHTML = ` <div class="match-left" data-original="${escapeAttr(pair.left)}">${pair.left}</div> <div class="match-divider">&rarr;</div> <div class="match-right" data-original="${escapeAttr(pair.right)}">${pair.right}</div> `;
                 matchingList.appendChild(row);
             });
             contentDiv.appendChild(matchingList);
@@ -26,7 +44,7 @@ function renderQuestions(questions) {
             item.options.forEach((opt) => {
                 const optionDiv = document.createElement("div");
                 optionDiv.className = `option ${opt.isCorrect ? "correct" : ""}`;
-                optionDiv.innerHTML = ` <div class="mark"></div> <div class="option-text">${opt.text}</div> `;
+                optionDiv.innerHTML = ` <div class="mark"></div> <div class="option-text" data-original="${escapeAttr(opt.text)}">${opt.text}</div> `;
                 optionsList.appendChild(optionDiv);
             });
             contentDiv.appendChild(optionsList);
@@ -43,12 +61,21 @@ function updateCounter(visible, total) {
     counterText.textContent = `Всего вопросов: ${total}`;
     searchStatus.textContent = visible === total ? "" : `показано ${visible} из ${total}`;
 }
+function debounce(fn, delay) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+    };
+}
+
 function initSearch() {
     const searchInput = document.getElementById("searchInput");
     const clearBtn = document.getElementById("searchClearBtn");
     const noResults = document.getElementById("noResults");
     function runFilter() {
-        const query = searchInput.value.toLowerCase().trim();
+        const rawQuery = searchInput.value.trim();
+        const query = rawQuery.toLowerCase();
         const qaItems = document.querySelectorAll(".qa-item");
         let visibleCount = 0;
         clearBtn.classList.toggle("visible", query.length > 0);
@@ -66,6 +93,7 @@ function initSearch() {
                 item.classList.add("hidden");
                 item.removeAttribute("open");
             }
+            applyHighlight(item, rawQuery);
         });
         updateCounter(visibleCount, questionsData.length);
         if (visibleCount > 0 || query.length === 0) {
@@ -74,7 +102,8 @@ function initSearch() {
             noResults.classList.remove("hidden");
         }
     }
-    searchInput.addEventListener("input", runFilter);
+    const debouncedFilter = debounce(runFilter, 150);
+    searchInput.addEventListener("input", debouncedFilter);
     clearBtn.addEventListener("click", () => {
         searchInput.value = "";
         runFilter();

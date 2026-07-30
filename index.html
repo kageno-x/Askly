@@ -8,30 +8,17 @@
     </head>
     <body>
         <div class="container">
-            <div class="main-grid">
-                <main class="search-area">
-                    <div class="search-container">
-                        <div class="search-input-wrap"><input type="text" id="searchInput" class="search-input" placeholder="Поиск по ключевым словам…" /> <button type="button" class="search-clear" id="searchClearBtn" aria-label="Очистить поиск">&times;</button></div>
-                        <div class="search-meta"><span id="counterText">Загрузка вопросов…</span> <span id="searchStatus"></span></div>
+            <main class="search-area">
+                <div class="search-container">
+                    <div class="search-input-wrap">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Поиск по ключевым словам…" />
+                        <button type="button" class="search-clear" id="searchClearBtn" aria-label="Очистить поиск">&times;</button>
                     </div>
-                    <div id="qaList"></div>
-                    <div id="noResults" class="no-results hidden">Ничего не найдено. Попробуй изменить запрос.</div>
-                </main>
-                <aside class="sidebar">
-                    <section class="sidebar-panel">
-                        <section class="contact-panel sidebar-contact">
-                            <h2>Контакты</h2>
-                            <p>Здесь можно найти мои каналы и страницы — пишите.</p>
-                            <div class="social-links contact-links">
-                                <a href="https://t.me/kageno_x" target="_blank" class="social-btn">Telegram</a>
-                                <a href="https://vk.com/kageno_gg" target="_blank" class="social-btn">ВКонтакте</a>
-                                <a href="https://boosty.to/kageno_gg" target="_blank" class="social-btn">Boosty</a>
-                                <a href="https://github.com/kageno-x" target="_blank" class="social-btn">GitHub</a>
-                            </div>
-                        </section>
-                    </section>
-                </aside>
-            </div>
+                    <div class="search-meta"><span id="counterText">Загрузка вопросов…</span> <span id="searchStatus"></span></div>
+                </div>
+                <div id="qaList"></div>
+                <div id="noResults" class="no-results hidden">Ничего не найдено. Попробуй изменить запрос.</div>
+            </main>
         </div>
         <button class="feedback-fab" id="openModalBtn">Контакты</button>
         <div class="modal-overlay" id="modalOverlay">
