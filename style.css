@@ -34,7 +34,6 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 28px 0 0;
 }
 .search-area {
     display: flex;
@@ -72,11 +71,6 @@ body {
     color: var(--text-muted);
     font-size: 13px;
     line-height: 1.5;
-}
-.header-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
 }
 .mini-links {
     display: flex;
